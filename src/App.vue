@@ -4,10 +4,8 @@
             <header><img src="@/assets/img/logo.png"></header>
         </div>
         <div id="right">
-            <div id="right_content">
                 <!--подключить Form.vue-->
                 <Form></Form>
-            </div>
         </div>
     </div>
 </template>

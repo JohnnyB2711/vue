@@ -1,5 +1,5 @@
 <template>
-    <div class="form">
+    <div id="right_content">
         <h2>Sign Up</h2>
         <!--  <div class="invalid">You have been successfully registered</div>
         <div class="invalid">Something went wrong.Please,try again</div>-->
@@ -22,6 +22,7 @@
                             </div>
                         </span>
             </div>
+
 
             <div class="pole_registr">
                 <span class="text">Username</span>

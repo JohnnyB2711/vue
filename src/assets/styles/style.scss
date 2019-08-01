@@ -19,8 +19,8 @@ $color_lightgreen:#14bc18;
   color: $property1;
 }
 @mixin transform($property1 , $property2) {
-  font-size: $property1;
-  margin: $property2;
+  font-size: $property1 !important;
+  margin: $property2 !important;
 }
 @mixin input-placeholder {
   &.placeholder { @content; }
@@ -55,8 +55,8 @@ html{
   }
 }
 h2{
-  @include transform(48px , 20px 0);
-  font-weight:bold;
+  @include transform(48px , 10px 0);
+  font-weight:bold !important;
 }
 #right{
   width: 35%;
@@ -89,7 +89,7 @@ h2{
   flex-direction: column;
   width: 100%;
   color: $color;
-  padding-top: 50px;
+  padding-top: 30px !important;
   @include transform(20px , 0);
   font-weight:bold;
   .pole_registr_flex {
@@ -210,7 +210,7 @@ label{
   display: flex;
   flex-direction: column;
   & .invalid{
-    margin-top: 90px;
+    margin-top: 90px !important;
   }
 }
 input[type=submit] {
