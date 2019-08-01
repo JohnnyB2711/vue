@@ -70,7 +70,7 @@ h2{
 #left {
   width: 65%;
   display: flex;
-  background: url(@/img/background.png);
+  background: url(assets/img/background.png);
   background-size: cover;
   header{
     width:100%;
@@ -200,7 +200,7 @@ label{
   right: 2px;
   bottom: 2px;
   left: 2px;
-  background: url(~/img/shape.png) no-repeat;
+  background: url(assets/img/Shape.png) no-repeat;
 }
 .checkbox:checked ~ .checkbox-custom {
   background:#dcdcdc;
@@ -226,4 +226,15 @@ input[type=submit] {
 }
 input[type=submit]:focus{
   background: linear-gradient(to top, $color_green 0%, $color_blue 100%);
+}
+.v-enter-active {
+  transition: opacity 30s ease-in-out;
+  opacity: 1;
+}
+.v-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.v-enter, .v-leave-to{
+  transform: translateX(30px);
+  opacity: 0;
 }
