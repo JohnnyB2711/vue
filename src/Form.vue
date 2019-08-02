@@ -1,11 +1,10 @@
 <template>
     <div id="right_content">
         <h2>Sign Up</h2>
-        <!--  <div class="invalid">You have been successfully registered</div>
-        <div class="invalid">Something went wrong.Please,try again</div>-->
-        <transition v-if="show">
-            <span class="invalid">Thank you!</span>
-        </transition>
+        <span class="invalid" v-if="success_message">>
+            <template v-if="success_message">You have been successfully registered</template>
+            <template v-if="error_message">Something went wrong.Please,try again</template>
+        </span>
         <form class="block_pole_registr" @submit.prevent="submit">
             <div class="pole_registr">
                 <span class="text">Full name</span>
@@ -57,7 +56,7 @@
             <div class="pole_registr">
                 <span class="text">Password</span>
                 <span class="pole_registr_flex mistakes">
-                            <input type="password"  placeholder="******" v-model="password"
+                            <input type="password" placeholder="******" v-model="password"
                                    @blur="$v.password.$touch()">
                             <div class="invalid" v-if="$v.password.$error">
                                 <template v-if="!$v.password.required">
@@ -87,7 +86,8 @@
 
             <div class="footer mistakes">
                 <label>
-                    <input class="checkbox" type="checkbox" name="checkbox-test" v-model="checkbox" @change="$v.checkbox.$touch()">
+                    <input class="checkbox" type="checkbox" name="checkbox-test" v-model="checkbox"
+                           @change="$v.checkbox.$touch()">
 
                     <span class="checkbox-custom"></span>
                     <span>I accept <span id="green_text"> Terms amd Condition</span></span>
@@ -98,6 +98,9 @@
                     </template>
                 </div>
                 <input type="submit" value="Sign Up" v-on:click="show = !show">
+                <transition v-if="show">
+                    <span class="message">Thank you!</span>
+                </transition>
             </div>
         </form>
     </div>
@@ -105,22 +108,25 @@
 </template>
 
 <script>
-    import {required, minLength, sameAs ,alpha, email} from 'vuelidate/lib/validators';
+    import {required, minLength, sameAs, alpha, email} from 'vuelidate/lib/validators';
+    import axios from 'axios';
 
     export default {
-        data(){
+        data() {
             return {
                 name: null,
                 username: null,
                 email: null,
                 password: null,
                 second_password: null,
-                checkbox:null,
-                show:false
+                checkbox: null,
+                show: false,
+                success_message: false,
+                error_message: false
             }
         },
         validations() {
-            return{
+            return {
                 name: {
                     required,
                     alpha
@@ -128,7 +134,6 @@
                 username: {
                     required,
                     alpha
-
                 },
                 email: {
                     required,
@@ -143,14 +148,41 @@
                     sameAs: sameAs('password')
                 },
                 checkbox: {
-                    sameAs: sameAs( () => true )
+                    sameAs: sameAs(() => true)
                 }
             }
         },
-        methods:{
-            submit() {
-                this.$v.$touch()
-                setTimeout(()=>{this.show=false},500);
+        methods: {
+            async submit() {
+                this.$v.$touch();
+                setTimeout(() => {
+                    this.show = false
+                }, 500);
+                if (!this.$v.$error) {
+                    try {
+                        await axios.post("https://trainee.smartru.com/api/application",
+                            {
+                                "full_name": this.name,
+                                "username": this.username,
+                                "email": this.email,
+                                "password": this.password,
+                                "password_confirmation": this.second_password
+                            }
+                        )
+                        this.success_message = true;
+                    } catch (e) {
+                        this.error_message = true;
+                    }
+
+                    /*.then(() => {
+                        this.success_message=true;
+
+                    })
+                    .catch(() => {
+                        this.error_message=true;
+                    });*/
+
+                }
             }
         }
     }

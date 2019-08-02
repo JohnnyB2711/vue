@@ -213,6 +213,11 @@ label{
     margin-top: 90px !important;
   }
 }
+.message{
+  position: absolute;
+  font-size: 10px !important;
+  color: black !important;
+}
 input[type=submit] {
   @include transform(30px, 70px 0 0 0);
   font-weight: bold;
