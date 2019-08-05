@@ -2,13 +2,12 @@
     <Table>
         <div class="table">
             <h1>Registered users</h1>
-            <b-table striped hover :fields="fields" :items="items"></b-table>
+            <b-table striped :fields="fields" :items="$store.state.items"></b-table>
         </div>
     </Table>
 </template>
 
 <script>
-    import axios from 'axios';
     import Table from "../layouts/Table";
 
     export default {
@@ -30,26 +29,8 @@
                         label: 'Email'
                     }
                 ],
-                items: [
-                    {email: 40, username: 'Dickerson', name: 'Macdonald'},
-                    {email: 21, username: 'Larsen', name: 'Shaw'},
-                    {email: 89, username: 'Geneva', name: 'Wilson'},
-                    {email: 38, username: 'Jami', name: 'Carney'}
-                ]
+                item: ''
             }
-        },
-        methods: {
-            async loadusers() {
-                try {
-                   this.items = (await axios.get("https://trainee.smartru.com/api/application")).data
-
-                } catch (e) {
-
-                }
-            }
-        },
-        created() {
-            this.loadusers()
         }
 
     }

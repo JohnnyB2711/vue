@@ -4,8 +4,7 @@
             <Menu></Menu>
         </div>
         <div id="right">
-            <slot>
-            </slot>
+            <slot></slot>
         </div>
     </div>
 

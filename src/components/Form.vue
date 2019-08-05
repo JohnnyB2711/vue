@@ -104,9 +104,7 @@
             </form>
         </div>
     </Registration>
-
 </template>
-
 <script>
     import {required, minLength, sameAs, alpha, email} from 'vuelidate/lib/validators';
     import axios from 'axios';
@@ -163,7 +161,7 @@
                 }, 500);
                 if (!this.$v.$error) {
                     try {
-                        await axios.post("https://trainee.smartru.com/api/application",
+                        var responce = await axios.post("https://trainee.smartru.com/api/application",
                             {
                                 "full_name": this.name,
                                 "username": this.username,
@@ -173,6 +171,8 @@
                             }
                         )
                         this.success_message = true;
+                        this.$store.commit('ADD_ITEMS', responce.data)
+
                     } catch (e) {
                         this.error_message = true;
                     }

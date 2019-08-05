@@ -243,3 +243,16 @@ input[type=submit]:focus{
   transform: translateX(30px);
   opacity: 0;
 }
+a{
+  color:royalblue;
+  text-decoration: none;
+}
+.router-link{
+  background: yellow;
+  border-radius: 5px;
+  color: red;
+  text-decoration: none;
+}
+.menu .col{
+  text-decoration: none;
+}

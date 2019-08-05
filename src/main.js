@@ -8,9 +8,10 @@ Vue.use(BootstrapVue)
 Vue.use(Vuelidate)
 
 import Router from 'vue-router'
-import users from '@/components/Users.vue'
+import users from './components/Users.vue'
 import registration from './components/Form.vue'
 Vue.use(Router)
+import store from './store'
 
 const router = new Router({
   mode: 'history',
@@ -31,6 +32,7 @@ const router = new Router({
 Vue.config.productionTip = false
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
 
