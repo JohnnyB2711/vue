@@ -1,14 +1,15 @@
 <template>
-    <div id="right_content">
-        <h2>Sign Up</h2>
-        <span class="invalid" v-if="success_message">>
+    <Registration>
+        <div id="right_content">
+            <h2>Sign Up</h2>
+            <span class="invalid" v-if="success_message">>
             <template v-if="success_message">You have been successfully registered</template>
             <template v-if="error_message">Something went wrong.Please,try again</template>
         </span>
-        <form class="block_pole_registr" @submit.prevent="submit">
-            <div class="pole_registr">
-                <span class="text">Full name</span>
-                <span class="pole_registr_flex mistakes">
+            <form class="block_pole_registr" @submit.prevent="submit">
+                <div class="pole_registr">
+                    <span class="text">Full name</span>
+                    <span class="pole_registr_flex mistakes">
                             <input type="text" placeholder="Name..." v-model="name"
                                    @blur="$v.name.$touch()">
                             <div class="invalid" v-if="$v.name.$error">
@@ -20,12 +21,10 @@
                                 </template>
                             </div>
                         </span>
-            </div>
-
-
-            <div class="pole_registr">
-                <span class="text">Username</span>
-                <span class="pole_registr_flex mistakes">
+                </div>
+                <div class="pole_registr">
+                    <span class="text">Username</span>
+                    <span class="pole_registr_flex mistakes">
                             <input type="text" placeholder="Username..." v-model="username"
                                    @blur="$v.username.$touch()">
                             <div class="invalid" v-if="$v.username.$error">
@@ -37,10 +36,10 @@
                                 </template>
                             </div>
                         </span>
-            </div>
-            <div class="pole_registr">
-                <span class="text">Email</span>
-                <span class="pole_registr_flex mistakes">
+                </div>
+                <div class="pole_registr">
+                    <span class="text">Email</span>
+                    <span class="pole_registr_flex mistakes">
                             <input type="text" placeholder="Email address..." v-model="email"
                                    @blur="$v.email.$touch()">
                             <div class="invalid" v-if="$v.email.$error">
@@ -52,10 +51,10 @@
                                 </template>
                             </div>
                         </span>
-            </div>
-            <div class="pole_registr">
-                <span class="text">Password</span>
-                <span class="pole_registr_flex mistakes">
+                </div>
+                <div class="pole_registr">
+                    <span class="text">Password</span>
+                    <span class="pole_registr_flex mistakes">
                             <input type="password" placeholder="******" v-model="password"
                                    @blur="$v.password.$touch()">
                             <div class="invalid" v-if="$v.password.$error">
@@ -67,10 +66,10 @@
                                 </template>
                             </div>
                         </span>
-            </div>
-            <div class="pole_registr">
-                <span class="text">Password Confirmation</span>
-                <span class="pole_registr_flex mistakes">
+                </div>
+                <div class="pole_registr">
+                    <span class="text">Password Confirmation</span>
+                    <span class="pole_registr_flex mistakes">
                             <input type="password" placeholder="******" v-model="second_password"
                                    @blur="$v.second_password.$touch()">
                              <div class="invalid" v-if="$v.second_password.$error">
@@ -82,37 +81,41 @@
                                 </template>
                             </div>
                         </span>
-            </div>
-
-            <div class="footer mistakes">
-                <label>
-                    <input class="checkbox" type="checkbox" name="checkbox-test" v-model="checkbox"
-                           @change="$v.checkbox.$touch()">
-
-                    <span class="checkbox-custom"></span>
-                    <span>I accept <span id="green_text"> Terms amd Condition</span></span>
-                </label>
-                <div class="invalid" v-if="$v.checkbox.$error">
-                    <template v-if="!$v.checkbox.sameAs">
-                        You mast accept terms and conditions
-                    </template>
                 </div>
-                <input type="submit" value="Sign Up" v-on:click="show = !show">
-                <transition v-if="show">
-                    <span class="message">Thank you!</span>
-                </transition>
-            </div>
-        </form>
-    </div>
+
+                <div class="footer mistakes">
+                    <label>
+                        <input class="checkbox" type="checkbox" name="checkbox-test" v-model="checkbox"
+                               @change="$v.checkbox.$touch()">
+
+                        <span class="checkbox-custom"></span>
+                        <span>I accept <span id="green_text"> Terms amd Condition</span></span>
+                    </label>
+                    <div class="invalid" v-if="$v.checkbox.$error">
+                        <template v-if="!$v.checkbox.sameAs">
+                            You mast accept terms and conditions
+                        </template>
+                    </div>
+                    <input type="submit" value="Sign Up" v-on:click="show = !show">
+                    <transition v-if="show">
+                        <span class="message">Thank you!</span>
+                    </transition>
+                </div>
+            </form>
+        </div>
+    </Registration>
 
 </template>
 
 <script>
     import {required, minLength, sameAs, alpha, email} from 'vuelidate/lib/validators';
     import axios from 'axios';
+    import Registration from "../layouts/Registration";
 
     export default {
-        data() {
+        components: {Registration},
+        data()
+        {
             return {
                 name: null,
                 username: null,
@@ -187,5 +190,3 @@
         }
     }
 </script>
-
-<style lang="scss">@import "@/assets/styles/style.scss";</style>
