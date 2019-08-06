@@ -22,15 +22,4 @@ export default new Vuex.Store({
             commit('SET_ITEMS', data);
         }
     }
-
-
-    /*async loadusers() {
-        try {
-            this.items = (await axios.get("https://trainee.smartru.com/api/application")).data
-
-        } catch (e) {
-
-        }
-    }*/
-
 })

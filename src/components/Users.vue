@@ -1,7 +1,7 @@
 <template>
     <Table>
         <div class="table">
-            <h1>Registered users</h1>
+            <h1>{{$t('Reg')}}</h1>
             <b-table striped :fields="fields" :items="$store.state.items"></b-table>
         </div>
     </Table>
