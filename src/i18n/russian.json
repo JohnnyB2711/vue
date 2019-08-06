@@ -1,0 +1,28 @@
+{
+  "msg": {
+    "success_message": "Регистрация прошла успешно!",
+    "invalid_message": "Что-то пошло не так.Пожайлуста,повторите!",
+    "null_message": "Пустое поле!",
+    "type_message": "Только буквы!",
+    "email_message": "Некорректный Email!",
+    "length_message1": "Введите ",
+    "length_message2": " символов!",
+    "password_message": "Пароли не совпадают!",
+    "accept_message": "Вы должны принять соглашение!",
+    "thank_message": "Спасибо!"
+  },
+  "title": "Регистрация",
+  "header1": "Ф.И.О",
+  "header2": "Логин",
+  "header3": "Email",
+  "header4": "Пароль",
+  "header5": "Подтверждение пароля",
+  "accept1": "Я принимаю",
+  "accept2": " условия и положения",
+  "users": "Пользователи",
+  "reg": "Регистрация",
+  "Reg": "Зарегистрированные пользователи",
+  "placeholder1": "Имя...",
+  "placeholder2": "Логин...",
+  "placeholder3": "Адрес почты..."
+}

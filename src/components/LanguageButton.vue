@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
+        <button v-for="entry in languages" :key="entry.title" @click.prevent="changeLocale(entry.language)">
             <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
         </button></div>
 </template>
