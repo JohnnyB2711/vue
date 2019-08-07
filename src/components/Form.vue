@@ -2,10 +2,8 @@
     <Registration>
         <div id="right_content">
             <h2>{{$t('title')}}</h2>
-            <span class="invalid" v-if="success_message">
-            <template v-if="success_message">{{$t('msg.success_message')}}</template>
-            <template v-if="error_message">{{$t('msg.invalid_message')}}</template>
-        </span>
+            <span class="invalid" v-if="error_message">{{$t('msg.invalid_message')}}</span>
+            <span class="invalid success_massage" v-if="success_message">{{$t('msg.success_message')}}</span>
             <form class="block_pole_registr" @submit.prevent="submit">
                 <div class="pole_registr">
                     <span class="text">{{$t('header1')}}</span>
@@ -88,7 +86,7 @@
                     <div class="invalid" v-if="$v.checkbox.$error">
                         <template v-if="!$v.checkbox.sameAs">{{$t('msg.accept_message')}}</template>
                     </div>
-                    <input type="submit" value="Sign Up" v-on:click="show = !show">
+                    <input type="submit" :value="$t('button')" v-on:click="show = !show">
                     <transition v-if="show">
                         <span class="message">{{$t('msg.thank_message')}}</span>
                     </transition>
@@ -166,9 +164,11 @@
                         this.success_message = true;
                         this.$store.commit('ADD_ITEMS', responce.data)
 
+
                     } catch (e) {
-                        this.success_message = false;
                         this.error_message = true;
+                        this.success_message = false;
+
                     }
                 }
             }

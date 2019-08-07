@@ -127,32 +127,6 @@ header{
     }
   }
 }
-.m .invalid{}
-.m{
-  @include transform(20px , 0);
-  color: $color_red !important;
-  img{
-    display: none;
-  }
-}
-.invalid_massage .invalid{
-  @include transform(20px , 0);
-  display: block;
-  box-sizing: border-box;
-  @include messages(1px solid,3px,$color_red , 10px 0);
-  img{
-    display: none;
-  }
-}
-.success_massage .invalid{
-  @include transform(20px , 0);
-  display: block;
-  box-sizing: border-box;
-  @include messages(1px solid,3px,$color_lightgreen, 10px 0);
-  img{
-    display: none;
-  }
-}
 .invalid{
   @include transform(18px ,10px 0 5px 0);
   @include messages(1px solid,3px,$color_red, 3px 7px);
@@ -164,6 +138,10 @@ header{
     vertical-align: text-top;
     margin-left: 10px;
   }
+}
+.success_massage{
+  border-color: $color_lightgreen;
+  color: $color_lightgreen;
 }
 #invalid_checkbox{
   display: block;
@@ -242,16 +220,6 @@ input[type=submit]:focus{
 .v-enter, .v-leave-to{
   transform: translateX(30px);
   opacity: 0;
-}
-a{
-  color:royalblue;
-  text-decoration: none;
-}
-.router-link{
-  background: yellow;
-  border-radius: 5px;
-  color: red;
-  text-decoration: none;
 }
 .menu .col{
   text-decoration: none;

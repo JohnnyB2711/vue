@@ -24,5 +24,6 @@
   "Reg":"Registered users",
   "placeholder1":"Name...",
   "placeholder2":"Username...",
-  "placeholder3":"Email address..."
+  "placeholder3":"Email address...",
+  "button": "Sign up"
 }
