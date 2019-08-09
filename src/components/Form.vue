@@ -3,7 +3,7 @@
         <div id="right_content">
             <h2>{{$t('title')}}</h2>
             <span class="invalid" v-if="error_message">{{$t('msg.invalid_message')}}</span>
-            <span class="invalid success_massage" v-if="success_message">{{$t('msg.success_message')}}</span>
+            <span class="invalid success_massage" v-if="form.success_message">{{$t('msg.success_message')}}</span>
             <form class="block_pole_registr" @submit.prevent="submit">
                 <div class="pole_registr">
                     <label for="input_name" class="text">{{$t('header1')}}</label>
@@ -113,10 +113,10 @@
                     email: '',
                     password: '',
                     second_password: '',
-                    checkbox: false
+                    checkbox: false,
+                    success_message: false,
                 },
                 show: false,
-                success_message: false,
                 error_message: false
             }
         },
@@ -166,14 +166,10 @@
                                 "password_confirmation": this.form.second_password
                             }
                         )
-                        this.success_message = true;
+                        this.form.success_message = true;
                         this.$store.commit('ADD_ITEMS', response.data);
                         setTimeout(() => {
-                            //this.success_message = false;
-                            Object.assign( ...this.data.form, this.$options.data.call(this));
-                            //Object.assign(this.$data, this.$options.data.call(this));
-                            //Object.assign(текущее значение,начальное );
-                            //this.name=null, this.username=null, this.email=null, this.password=null, this.second_password=null,this.checkbox=null
+                            Object.assign(this.form , this.$options.data.call(this).form);
                             this.$v.$reset();
                         }, 500)
                     } catch (e) {
