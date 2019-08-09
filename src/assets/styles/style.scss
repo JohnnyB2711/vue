@@ -100,11 +100,7 @@ header{
 
   .pole_registr{
     width: 100%;
-    margin-top: 35px;
-    #text{
-      top:10px;
-      margin-top: 10px;
-    }
+    margin-top: 25px;
 
     input{
       &.error {
@@ -150,26 +146,7 @@ header{
   display: block;
   margin-top:10px;
 }
-label{
-  @include transform(20px, 50px 0 0 0);
-  font-weight:bold;
-  #green_text{
-    color:$color_lightgreen;
-  }
-  .checkbox {
-    display: none;
-  }
-  .checkbox-custom {
-    width: 32px;
-    height: 32px;
-    position: relative;
-    margin:0 10px 0  0;
-    vertical-align: middle;
-    border-radius: 3px;
-    cursor: pointer;
-    background:lightgrey;
-  }
-}
+
 .checkbox-custom, label {
   display: inline-block;
   border: none !important;
@@ -189,6 +166,25 @@ label{
 .footer{
   display: flex;
   flex-direction: column;
+  label{
+    @include transform(20px, 50px 0 0 0);
+    #green_text{
+      color:$color_lightgreen;
+    }
+    .checkbox {
+      display: none;
+    }
+    .checkbox-custom {
+      width: 32px;
+      height: 32px;
+      position: relative;
+      margin:0 10px 0  0;
+      vertical-align: middle;
+      border-radius: 3px;
+      cursor: pointer;
+      background:lightgrey;
+    }
+  }
   & .invalid{
     margin-top: 90px !important;
   }
@@ -225,5 +221,5 @@ input[type=submit]:focus{
 }
 .menu .col{
   text-decoration: none;
-  color: white;
+  color:white;
 }
