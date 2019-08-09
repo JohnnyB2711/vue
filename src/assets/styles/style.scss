@@ -1,10 +1,11 @@
 $font-family:Verdana,serif;
 $letter-spacing:1px;
 $color:#959595;
+$color_grey:#808080;
 $color_green:#64c29b;
 $color_blue:#00aeef;
 $color_red:#c80000;
-$color_lightgreen:#14bc18;
+$color_lightgreen:#319126;
 
 @mixin pseudo($display: block, $pos: absolute, $content: ''){
   content: $content;
@@ -84,18 +85,19 @@ header{
     width:500px;
   }
 }
+
 .block_pole_registr{
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  color: $color;
+  color: $color_grey;
   padding-top: 30px !important;
   @include transform(20px , 0);
   font-weight:bold;
+
   .pole_registr_flex {
     display: flex;
-    flex-direction:row-reverse;
+    justify-content: flex-end;
   }
+
   .pole_registr{
     width: 100%;
     margin-top: 35px;
@@ -103,6 +105,7 @@ header{
       top:10px;
       margin-top: 10px;
     }
+
     input{
       &.error {
         border-bottom: 2px solid $color_red;
@@ -117,7 +120,7 @@ header{
       padding-bottom:5px;
       @include transform(28px , 10px 0 0 0);
       @include input-placeholder {
-        color: #dcdcdc;
+        color: $color
       }
     }
     input:focus{
@@ -149,10 +152,9 @@ header{
 }
 label{
   @include transform(20px, 50px 0 0 0);
-  color: #959595;
   font-weight:bold;
   #green_text{
-    color:#65c29b;
+    color:$color_lightgreen;
   }
   .checkbox {
     display: none;
@@ -223,4 +225,5 @@ input[type=submit]:focus{
 }
 .menu .col{
   text-decoration: none;
+  color: white;
 }

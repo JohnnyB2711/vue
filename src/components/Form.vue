@@ -4,10 +4,12 @@
             <h2>{{$t('title')}}</h2>
             <span class="invalid" v-if="error_message">{{$t('msg.invalid_message')}}</span>
             <span class="invalid success_massage" v-if="success_message">{{$t('msg.success_message')}}</span>
-            <form class="block_pole_registr" @submit.prevent="submit">
+
+
+            <form class="block_pole_registr" id="form" @submit.prevent="submit">
                 <div class="pole_registr">
                     <span class="text">{{$t('header1')}}</span>
-                    <span class="pole_registr_flex mistakes">
+                    <span class="pole_registr_flex">
                             <input type="text" :placeholder="$t('placeholder1')" v-model="name"
                                    @blur="$v.name.$touch()">
                             <div class="invalid" v-if="$v.name.$error">
@@ -101,7 +103,6 @@
     import axios from 'axios';
     import Registration from "../layouts/Registration";
     import LanguageButton from "./LanguageButton";
-
     export default {
         components: {LanguageButton, Registration},
         data() {
@@ -145,30 +146,29 @@
             }
         },
         methods: {
-            async submit() {
+            async submit(event) {
                 this.$v.$touch();
                 setTimeout(() => {
                     this.show = false
                 }, 500);
                 if (!this.$v.$error) {
                     try {
-                        var responce = await axios.post("https://trainee.smartru.com/api/application",
-                            {
-                                "full_name": this.name,
-                                "username": this.username,
-                                "email": this.email,
-                                "password": this.password,
-                                "password_confirmation": this.second_password
-                            }
-                        )
+                        var response = await axios.post("https://trainee.smartru.com/api/application",
+                        {
+                            "full_name": this.name,
+                            "username": this.username,
+                            "email": this.email,
+                            "password": this.password,
+                            "password_confirmation": this.second_password
+                        }
+                    )
+            //this.$v.reset();
+                        //event.target.clear()
+                        event.target.reset();
                         this.success_message = true;
-                        this.$store.commit('ADD_ITEMS', responce.data)
-
-
+                        this.$store.commit('ADD_ITEMS', response.data);
                     } catch (e) {
                         this.error_message = true;
-                        this.success_message = false;
-
                     }
                 }
             }
